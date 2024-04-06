@@ -14,10 +14,7 @@ app.get("/", (req, res) => {
   res.send(`<h1>Welcome to Ecommerce web app</h1>`);
 });
 
-//port
-const PORT = 8080;
-
 //run listen
-app.listen(PORT, () => {
+app.listen(newPORT, () => {
   console.log(`Server start on port:${newPORT}`.magenta);
 });
