@@ -1,13 +1,13 @@
 import express from "express";
 import color from "colors";
-import dotenv from 'dotenv';
-
+import dotenv from "dotenv";
 
 //rest objects
 const app = express();
+
 //configure env
 dotenv.config();
-const newPORT=process.env.PORT||3000;
+const newPORT = process.env.PORT || 3000;
 
 //rest api
 app.get("/", (req, res) => {
@@ -16,5 +16,5 @@ app.get("/", (req, res) => {
 
 //run listen
 app.listen(newPORT, () => {
-  console.log(`Server start on port:${newPORT}`.magenta);
+  console.log(`Server start on port:${newPORT}`.cyan);
 });
