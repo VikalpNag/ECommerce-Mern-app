@@ -1,0 +1,8 @@
+{
+    "prettier.bracketSameLine": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "eslint.codeActionsOnSave.rules": null,
+    "prettier.requireConfig": true,
+    "prettier.requirePragma": true
+}

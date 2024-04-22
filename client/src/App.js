@@ -1,4 +1,3 @@
-import Layout from "./Components/Layout/Layout";
 import { Routes, Route } from "react-router-dom";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
