@@ -37,3 +37,12 @@
   font-size: 28px;
   font-weight: 400;
 }
+
+/* footer css */
+.links{
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
