@@ -20,13 +20,13 @@ const Header = () => {
           <NavLink to="/category" className="nav-link">Category</NavLink>
         </li>
         <li className="nav-item">
+          <NavLink to="/cart" className="nav-link">Cart(0)</NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/register" className="nav-link">Register</NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/login" className="nav-link">Login</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/cart" className="nav-link">Cart(0)</NavLink>
         </li>
       </ul>
     </div>
