@@ -21,8 +21,10 @@
     font-size: 15px;
     text-decoration: none;
     width: fit-content;
-    border: .5px solid black;
+    border: 2px solid rgb(184, 184, 184);
     padding: 10px;
     margin-top: 10px;
-    border-radius: 10px;
+    border-radius: 18px;
+    color: green;
+    font-weight: 500;
 }  
