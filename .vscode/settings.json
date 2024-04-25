@@ -4,5 +4,10 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
     "eslint.codeActionsOnSave.rules": null,
     "prettier.requireConfig": true,
-    "prettier.requirePragma": true
+    "prettier.requirePragma": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+  
 }
