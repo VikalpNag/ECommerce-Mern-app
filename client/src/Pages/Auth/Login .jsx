@@ -3,11 +3,13 @@ import Layout from '../../Components/Layout/Layout';
 import './register.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/auth';
 
 const Login  = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const[auth,setAuth]=useAuth();
   const navigate = useNavigate();
 
   //form submit function
@@ -20,22 +22,28 @@ const Login  = () => {
       const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`,
         { email, password});
       if (res && res.data.success) {
-        toast.success("Registered Successfully", { autoClose: false });
+        toast.success("Logged In Successfully");
+        setAuth({
+          ...auth,
+          user:res.data.user,
+          token:res.data.token,
+        });
+        localStorage.setItem("auth",JSON.stringify(res.data))
         navigate("/");
 
       } else {
-        toast.error(res.data.message, { duration: 10000 });
+        toast.error("Something went wrong!");
       }
 
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong!", { duration: 10000 })
+      toast.error("Something went wrong!")
     }
   }
 
   return (
 
-      <Layout title="Register Now">
+      <Layout title="Login">
       <div className="reg">
         <h1>Login Page</h1>
         <form onSubmit={ handleSubmit }>

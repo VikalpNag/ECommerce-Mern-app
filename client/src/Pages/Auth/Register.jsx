@@ -3,7 +3,7 @@ import Layout from '../../Components/Layout/Layout';
 import './register.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState("");
