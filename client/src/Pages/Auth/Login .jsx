@@ -3,7 +3,7 @@ import Layout from '../../Components/Layout/Layout';
 import './register.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth';
 
 const Login  = () => {
@@ -11,6 +11,7 @@ const Login  = () => {
   const [password, setPassword] = useState("");
   const[auth,setAuth]=useAuth();
   const navigate = useNavigate();
+  const location =useLocation();
 
   //form submit function
   const handleSubmit = async (e) => {
@@ -29,7 +30,7 @@ const Login  = () => {
           token:res.data.token,
         });
         localStorage.setItem("auth",JSON.stringify(res.data))
-        navigate("/");
+        navigate(location.state || "/");
 
       } else {
         toast.error("Something went wrong!");
