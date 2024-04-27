@@ -47,7 +47,7 @@ const Login  = () => {
       <Layout title="Login">
       <div className="reg">
         <h1>Login Page</h1>
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={ handleSubmit } className='d-flex flex-column mb-3'>
 
           <div className="mb-2">
             <input type="email" value={ email } onChange={ (e) => setEmail(e.target.value) } className='form-control' placeholder='email' />
@@ -55,7 +55,14 @@ const Login  = () => {
           <div className="mb-2">
             <input type="password" value={ password } onChange={ (e) => setPassword(e.target.value) } className='form-control' placeholder='password' />
           </div>
-          <button type='submit' className='btn btn-primary'>Login</button>
+          <div className="mb-2 w-90">
+          <button type='submit' className='btn btn-primary w-100' style={{ minWidth: '150px' }}>Login</button>
+          </div>
+          <div className="mb-2">
+          <button type='submit' className='btn btn-secondary' onClick={()=>{
+            navigate("/forgot-password");
+          }}>Forgot password</button>
+          </div>
         </form>
 
       </div>
