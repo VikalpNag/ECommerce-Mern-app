@@ -10,7 +10,7 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "svipas.prettier-plus"
     },
     "editor.formatOnSave": true,
   
