@@ -6,7 +6,13 @@ export const UserMenu = () => {
     <div>
       <div className="text-center"></div>
       <div className="list-group">
-        <h4>Dashboard</h4>
+        <NavLink
+          to="/dashboard/user"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <h4>Dashboard</h4>
+        </NavLink>
+
         <NavLink
           to="/dashboard/user/profile"
           className="list-group-item list-group-item-action"
@@ -14,7 +20,7 @@ export const UserMenu = () => {
           Profile
         </NavLink>
         <NavLink
-          to="/dashboard/user/oders"
+          to="/dashboard/user/order"
           className="list-group-item list-group-item-action"
         >
           Orders

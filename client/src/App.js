@@ -14,6 +14,8 @@ import AdminDashboard from "./Pages/Admin/AdminDashboard.jsx";
 import CreateCategory from "../src/Pages/Admin/CreateCategory.jsx";
 import CreateProduct from "../src/Pages/Admin/CreateProduct.jsx";
 import Users from "./Pages/Admin/Users.jsx";
+import Profile from "./Pages/users/Profile.jsx";
+import Order from "./Pages/users/Order.jsx";
 
 function App() {
   return (
@@ -26,15 +28,20 @@ function App() {
         <Route path="*" element={ <PageNotFound /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
+
         <Route path="/dashboard" element={ <PrivateRoute /> }>
           <Route path="user" element={ <Dashboard /> } />
+          <Route path="user/profile" element={ <Profile /> } />
+          <Route path="user/order" element={ < Order /> } />
         </Route>
+
         <Route path="/dashboard" element={ <AdminRoute /> }>
           <Route path="admin" element={ <AdminDashboard /> } />
           <Route path="admin/create-category" element={ <CreateCategory /> } />
           <Route path="admin/create-product" element={ <CreateProduct /> } />
           <Route path="admin/users" element={ <Users /> } />
         </Route>
+
         <Route path="/forgot-password" element={ <ForgotPassword /> } />
       </Routes>
     </>
