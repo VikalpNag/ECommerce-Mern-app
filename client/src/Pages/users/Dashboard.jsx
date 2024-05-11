@@ -14,9 +14,11 @@ const Dashboard = () => {
             <UserMenu />
           </div>
           <div className="col-md-9">
-            <h4>User name:{auth?.user?.name}</h4>
-            <h4>User email:{auth?.user?.email}</h4>
-            <h4>User phone:{auth?.user?.phone}</h4>
+            <div className="card w-75 p-3">
+              <h4>User name:{auth?.user?.name}</h4>
+              <h4>User email:{auth?.user?.email}</h4>
+              <h4>User phone:{auth?.user?.phone}</h4>
+            </div>
           </div>
         </div>
       </div>
