@@ -6,7 +6,8 @@ import {
     deleteProductController,
     getProductController,
     getSingleProductController,
-    productPhotoController
+    productPhotoController,
+    updateProductController
 } from '../controller/productController.js';
 
 const router = express.Router();
@@ -24,5 +25,9 @@ router.get('/get-product/:slug', getSingleProductController);
 router.get('/product-photo/:pid', productPhotoController);
 
 //delete-product
-router.delete('/delete-product/:pid', requireSignIn, isAdmin, deleteProductController)
+router.delete('/delete-product/:pid', requireSignIn, isAdmin, deleteProductController);
+
+//update-product
+router.put('/update-product/:pid', requireSignIn, isAdmin, formidable(), updateProductController);
+
 export default router;

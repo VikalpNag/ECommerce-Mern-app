@@ -1,3 +1,4 @@
+import { error } from 'console';
 import productModel from '../models/ProductModel.js';
 import fs from 'fs';
 import slugify from 'slugify';
@@ -130,5 +131,55 @@ export const deleteProductController = async (req, res) => {
             error
         })
 
+    }
+};
+
+//update-product
+export const updateProductController = async (req, res) => {
+    try {
+        const { name, description, price, category, quantity, shipping } = req.fields;
+        const { photo } = req.files;
+
+        //validation
+        switch (true) {
+            case !name:
+                return res.status(500).send({ error: "Name is required" });
+            case !description:
+                return res.status(500).send({ error: "Description is required" });
+            case !price:
+                return res.status(500).send({ error: "Pricce is  required" });
+            case !category:
+                return res.status(500).send({ error: "Category is requied" });
+            case !quantity:
+                return res.status(500).send({ error: "Quantity is requires" });
+            case photo && photo > 10000000:
+                return res
+                    .status(500)
+                    .send({ error: "Photo is required and should be less than 10mb" });
+        }
+
+        const product = await productModel.findByIdAndUpdate(
+            req.params.pid,
+            { ...req.params.fields, slug: slugify(name) },
+            { new: true }
+        );
+        if (photo) {
+            product.photo.data = fs.readFileSync(photo.path)
+            product.photo.contentType = photo.type;
+        }
+        await product.save();
+        res.status(200).send({
+            success: true,
+            message: "Product Updated SuccessFully",
+            product
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error white updating product",
+            error
+        })
     }
 }
