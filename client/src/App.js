@@ -17,6 +17,7 @@ import Users from "./Pages/Admin/Users.jsx";
 import Profile from "./Pages/users/Profile.jsx";
 import Order from "./Pages/users/Order.jsx";
 import Products from '../src/Pages/Admin/Products.jsx'
+import UpdateProduct from "./Pages/Admin/updateProduct.jsx";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="admin/create-category" element={ <CreateCategory /> } />
           <Route path="admin/create-product" element={ <CreateProduct /> } />
           <Route path="admin/products" element={ <Products /> } />
+          <Route path="admin/product/:slug" element={ <UpdateProduct /> } />
           <Route path="admin/users" element={ <Users /> } />
         </Route>
 
