@@ -46,3 +46,11 @@
   margin: 0;
   padding: 0;
 }
+
+/* all product */
+.product-link{
+  text-decoration: none !important;
+  color: black !important;
+}
+
+
