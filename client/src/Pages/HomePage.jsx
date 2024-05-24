@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Layout from "../Components/Layout/Layout.jsx";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../Components/Prices.jsx";
 
