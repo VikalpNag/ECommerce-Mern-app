@@ -53,4 +53,19 @@
   color: black !important;
 }
 
+.prc{
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+}
 
+.rst{
+  width: 100px;
+  height: 20px;
+  color: white;
+  background-color: #515151;
+  margin-top: 20px;
+  text-align: center;
+  padding: 0;
+  font-size: 10px;
+}
