@@ -18,11 +18,14 @@ import Profile from "./Pages/users/Profile.jsx";
 import Order from "./Pages/users/Order.jsx";
 import Products from '../src/Pages/Admin/Products.jsx'
 import UpdateProduct from "./Pages/Admin/updateProduct.jsx";
+import Search from "./Pages/Search.jsx";
+import ProductDetails from './Pages/ProductDetails.jsx';
 
 function App() {
   return (
     <>
       <Routes>
+
         <Route path="/about" element={ <About /> } />
         <Route path="/contact" element={ <Contact /> } />
         <Route path="/" element={ <HomePage /> } />
@@ -30,6 +33,9 @@ function App() {
         <Route path="*" element={ <PageNotFound /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
+        <Route path="/forgot-password" element={ <ForgotPassword /> } />
+        <Route path="/search" element={ <Search /> } />
+        <Route path="/product/:slug" element={ <ProductDetails /> } />
 
         <Route path="/dashboard" element={ <PrivateRoute /> }>
           <Route path="user" element={ <Dashboard /> } />
@@ -46,7 +52,6 @@ function App() {
           <Route path="admin/users" element={ <Users /> } />
         </Route>
 
-        <Route path="/forgot-password" element={ <ForgotPassword /> } />
       </Routes>
     </>
   );

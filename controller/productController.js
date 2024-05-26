@@ -1,7 +1,8 @@
-import { error } from 'console';
+
 import productModel from '../models/ProductModel.js';
 import fs from 'fs';
 import slugify from 'slugify';
+
 
 export const createProductController = async (req, res) => {
     try {
@@ -268,6 +269,30 @@ export const searchProductController = async (req, res) => {
             success: false,
             message: "Error in searching product",
             error
+        })
+    }
+};
+
+//similar products
+export const relatedProductController = async (req, res) => {
+    try {
+        const { pid, cid } = req.params;
+        const product = await productModel.find({
+            category: cid,
+            _id: { $ne: pid },
+        }).select("-photo").limit(3).populate("category");
+
+        res.status(200).send({
+            success: true,
+            product
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({
+            success: false,
+            message: "Error while getting related products",
+            error,
         })
     }
 }
