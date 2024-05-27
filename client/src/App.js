@@ -20,6 +20,7 @@ import Products from '../src/Pages/Admin/Products.jsx'
 import UpdateProduct from "./Pages/Admin/updateProduct.jsx";
 import Search from "./Pages/Search.jsx";
 import ProductDetails from './Pages/ProductDetails.jsx';
+import Categories from './Pages/Categories.jsx'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/forgot-password" element={ <ForgotPassword /> } />
         <Route path="/search" element={ <Search /> } />
         <Route path="/product/:slug" element={ <ProductDetails /> } />
+        <Route path="/categories" element={ <Categories /> } />
 
         <Route path="/dashboard" element={ <PrivateRoute /> }>
           <Route path="user" element={ <Dashboard /> } />
