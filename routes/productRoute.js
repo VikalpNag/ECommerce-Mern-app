@@ -6,6 +6,7 @@ import {
     deleteProductController,
     getProductController,
     getSingleProductController,
+    productCategoryController,
     productCountController,
     productFilterController,
     productListController,
