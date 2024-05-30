@@ -4,10 +4,14 @@ import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput.jsx";
 import useCategory from "../../hooks/useCategory.jsx";
+import { useCart } from "../../context/cart.jsx";
+import { Badge } from "antd";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const categories = useCategory();
+  const [cart] = useCart();
+  const categories = useCategory([]);
+
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -17,6 +21,7 @@ const Header = () => {
     localStorage.removeItem("auth");
     toast.success("Logout successfully");
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -58,7 +63,7 @@ const Header = () => {
                     </Link>
                   </li>
                   {categories?.map((c) => (
-                    <li>
+                    <li key={c._id}>
                       <Link
                         className="dropdown-item"
                         to={`/category/${c.slug}`}
@@ -68,11 +73,6 @@ const Header = () => {
                     </li>
                   ))}
                 </ul>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart(0)
-                </NavLink>
               </li>
               {!auth.user ? (
                 <>
@@ -122,6 +122,13 @@ const Header = () => {
                   </li>
                 </>
               )}
+              <li className="nav-item">
+                <Badge count={cart?.length} showZero>
+                  <NavLink to="/cart" className="nav-link">
+                    Cart
+                  </NavLink>
+                </Badge>
+              </li>
             </ul>
           </div>
         </div>
