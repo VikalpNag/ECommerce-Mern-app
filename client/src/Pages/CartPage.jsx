@@ -3,6 +3,7 @@ import Layout from "../Components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
+import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -45,7 +46,9 @@ const CartPage = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/braintree/token`
+      );
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -60,10 +63,13 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
-        nonce,
-        cart,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/product/braintree/payment`,
+        {
+          nonce,
+          cart,
+        }
+      );
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
@@ -88,7 +94,7 @@ const CartPage = () => {
                   ? `You Have ${cart.length} items in your cart ${
                       auth?.token ? "" : "please login to checkout !"
                     }`
-                  : " Your Cart Is Empty"}
+                  : " Your Cart is Empty"}
               </p>
             </h1>
           </div>
@@ -164,7 +170,7 @@ const CartPage = () => {
                   )}
                 </div>
               )}
-              {/* <div className="mt-2">
+              <div className="mt-2">
                 {!clientToken || !auth?.token || !cart?.length ? (
                   ""
                 ) : (
@@ -188,7 +194,7 @@ const CartPage = () => {
                     </button>
                   </>
                 )}
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
