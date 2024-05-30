@@ -226,4 +226,25 @@ export const getOrdersController = async (req, res) => {
       error
     })
   }
+};
+
+//all-orders
+export const getAllOrderController = async (req, res) => {
+  try {
+
+    const orders = await orderModel
+      .find({})
+      .populate("products", "-photo")
+      .populate("buyer", "name")
+      .sort({ createdAt: "-1" });
+    res.send(orders);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while getting all products",
+      error,
+    })
+  }
 }
